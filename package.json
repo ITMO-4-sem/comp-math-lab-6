@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "webpack": "webpack",
-    "dev": "cross-env NODE_ENV=development webpack",
+    "dev": "cross-env NODE_ENV=development webpack --watch",
     "start": "cross-env PORT=8088 NODE_ENV=development webpack serve --open",
     "build": "cross-env NODE_ENV=production webpack",
     "stats": "webpack --json > stats.json && webpack-bundle-analyzer stats.json",

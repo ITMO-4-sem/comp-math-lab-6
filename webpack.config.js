@@ -28,6 +28,7 @@ module.exports = {
 
   entry: {
     main: './ts/index.ts',
+    debug: './ts/debug.ts'
   },
 
   output: {
