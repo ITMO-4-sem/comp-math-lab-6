@@ -1,19 +1,22 @@
 import { Method } from '@ts/calculations/methods/Method';
-import { FlexibleTable } from '@ts/calculations/FlexibleTable';
+import { FlexibleTable } from '@ts/calculations/util/FlexibleTable';
 import { Function } from '@ts/calculations/functions/Function';
+import { OneStepMethod } from '@ts/calculations/methods/onestepmethods/OneStepMethod';
 
 
-export class RungeKuttaMethod extends Method {
+export class RungeKuttaMethod extends OneStepMethod {
     getAccuracyOrder(): number {
         return 4;
     }
 
     // eslint-disable-next-line @typescript-eslint/ban-types
-    public calc(table: FlexibleTable, func: Function, step: number): FlexibleTable {
-        const h = step;
+    public calc(table: FlexibleTable, func: Function): FlexibleTable {
 
         const  xValues = table.getXValues();
         const yValues = table.getYValues();
+
+        const h = xValues[1] - xValues[0];
+
 
         for ( let i = yValues.length; i < table.size(); i++ ) {
 

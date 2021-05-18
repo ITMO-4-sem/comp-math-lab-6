@@ -1,4 +1,4 @@
-import { Table } from '@ts/calculations/Table';
+import { Table } from '@ts/calculations/util/Table';
 import { Clonable } from '@ts/calculations/util/Clonable';
 
 

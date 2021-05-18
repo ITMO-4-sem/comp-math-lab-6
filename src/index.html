@@ -1,16 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="favicon.svg">
-  <title>webpack-starter</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.svg">
+    <title>CompMath-6</title>
 </head>
 <body>
 
 
-<div class="container"></div>
+<section class="hero is-link is-small">
+    <div class="hero-body">
+        <p class="title">
+            Вычислительная математика л.р № 6
+        </p>
+        <p class="subtitle">
+            ОДУ
+        </p>
+    </div>
+</section>
+
+
+<div class="container">
+
+    <div class="section">
+        <div class="block">
+            <h2 class="title">Введите параметры для решения ОДУ</h2>
+
+            <form action="">
+
+                <label class="label">Выберите ОДУ</label>
+
+                <div class="field">
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="question" checked>
+                            y' = y + (1 + x)y^2
+                        </label>
+                    </div>
+                </div>
+
+                <hr>
+
+                <label class="label">Введите начальное условие</label>
+
+                <div class="field">
+                    <label class="label">x0</label>
+                    <div class="control">
+                        <input class="input" type="number">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">y0</label>
+                    <div class="control">
+                        <input class="input" type="number">
+                    </div>
+                </div>
+
+                <hr>
+
+                <label class="label">Введите интервал интегрирования</label>
+
+                <div class="field">
+                    <label class="label">a</label>
+                    <div class="control">
+                        <input class="input" type="number">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">b</label>
+                    <div class="control">
+                        <input class="input" type="number">
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="field">
+                    <label class="label">Введите точность</label>
+                    <div class="control">
+                        <input type="number" class="input is-link">
+                    </div>
+                </div>
+                <hr>
+                <button class="button is-link">Вперед</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <div class="block">
+            <h2 class="title">Результат расчетов</h2>
+            <div class="plot"></div>
+        </div>
+    </div>
+
+</div>
+
+
+<section class="hero is-link is-small">
+    <div class="hero-body">
+        <p class="title">
+            Автор: Максим Монахов
+        </p>
+        <p class="subtitle">
+            Код на Github
+        </p>
+    </div>
+</section>
 
 
 </body>
