@@ -1,15 +1,15 @@
 import { Range } from '@ts/calculations/util/Range';
-import { PrimaryCondition } from '@ts/calculations/functions/PrimaryCondition';
 import { Function } from '@ts/calculations/functions/Function';
 import { Method } from '@ts/calculations/methods/Method';
 import { FlexibleTable } from '@ts/calculations/util/FlexibleTable';
+import { CoreResult } from '@ts/calculations/CoreResult';
 
 
 export class Core {
 
 
     // eslint-disable-next-line @typescript-eslint/ban-types
-    public calcMethod(func: Function, range: Range, method: Method, accuracy: number, initialStepNum?: number) {
+    public calc(func: Function, range: Range, method: Method, accuracy: number, initialStepNum?: number): CoreResult {
 
         if ( initialStepNum && initialStepNum < 1 ) {
             throw new Error('"initialStepNum" must be greater than zero.');
@@ -28,41 +28,28 @@ export class Core {
             step /= 2;
 
             const resultTableStepHalfH = this.calcWIthFixedStep(method, func, range, step);
-            // считаем погрешность 
+            // считаем погрешность
             // присваиваем tableH значение tableHalfH
 
-            console.log('resultTableStepH = ', resultTableStepH);
-            console.log('resultTableStepHalfH = ', resultTableStepHalfH);
+            // console.log('resultTableStepH = ', resultTableStepH);
+            // console.log('resultTableStepHalfH = ', resultTableStepHalfH);
 
 
             maxBias = this.getMaxBias(resultTableStepH.getYValues(), resultTableStepHalfH.getYValues(), method.getRequiredNumOfPredefinedYValues());
 
             resultTableStepH = resultTableStepHalfH;
 
-            console.log('maxBias = ', maxBias);
+            // console.log('maxBias = ', maxBias);
 
         } while ( ! this.isAccuracySufficient(accuracy, maxBias) );
 
+        return {
+            step: step,
+            bias: maxBias,
+            table: resultTableStepH
+        };
+
     }
-
-
-
-
-
-
-
-
-
-
- //todo выводить объект с 1) таблицей 2) шагом 3) максимальной погрешностью
-
-
-
-
-
-
-
-
 
 
     // eslint-disable-next-line @typescript-eslint/ban-types

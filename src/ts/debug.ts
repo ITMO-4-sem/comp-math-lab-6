@@ -9,9 +9,9 @@ import { Core } from '@ts/calculations/Core';
 import { Range } from '@ts/calculations/util/Range';
 
 
-const firstFunction = new FirstFunction(new PrimaryCondition(1, -1));
+const firstFunction = new FirstFunction(new PrimaryCondition(2, 4));
 
-const range1: Range = new Range(1, 1.5);
+const range1: Range = new Range(80, 100);
 
 const flexibleTable1 = new FlexibleTable(
     [1, 1.1, 1.2, 1.3, 1.4, 1.5],
@@ -25,31 +25,36 @@ const flexibleTable1Prefilled = new FlexibleTable(
 const h = 0.1;
 
 
-const eulerMethod = new EulerMethod();
+const eulerMethod = new EulerMethod(); //
 const eulerMethodResult = eulerMethod.calc(flexibleTable1.clone(), firstFunction);
-console.log('eulerMethodResult = ', eulerMethodResult);
+// console.log('eulerMethodResult = ', eulerMethodResult);
 
 const modifiedEulerMethod = new ModifiedEulerMethod();
 const modifiedEulerMethodResult = modifiedEulerMethod.calc(flexibleTable1.clone(), firstFunction);
-console.log('modifiedEulerMethodResult = ', modifiedEulerMethodResult);
+// console.log('modifiedEulerMethodResult = ', modifiedEulerMethodResult);
 
 const rungeKuttaMethod = new RungeKuttaMethod();
 const rungeKuttaMethodResult = rungeKuttaMethod.calc(flexibleTable1.clone(), firstFunction);
-console.log('rungeKuttaMethodResult = ', rungeKuttaMethodResult);
+// console.log('rungeKuttaMethodResult = ', rungeKuttaMethodResult);
 
 const adamsMethod = new AdamsMethod();
 const adamsMethodResult = adamsMethod.calc(flexibleTable1Prefilled.clone(), firstFunction);
-console.log('adamsMethodResult = ', adamsMethodResult);
+// console.log('adamsMethodResult = ', adamsMethodResult);
 
 
-for ( let i = 0; i < flexibleTable1.size(); i++ ) {
-    const x = flexibleTable1.getXValues()[i];
-    console.log('x = ',x, ' F(x) = ', firstFunction.func(x));
-}
+// for ( let i = 0; i < flexibleTable1.size(); i++ ) {
+//     const x = flexibleTable1.getXValues()[i];
+    // console.log('x = ',x, ' F(x) = ', firstFunction.func(x));
+// }
 
 
 const core = new Core();
 
 const accuracy = 0.001;
 
-console.log( core.calcMethod(firstFunction, range1, eulerMethod, accuracy, 5) );
+console.log('piU');
+
+// console.log( 'eulerMethodResult = ', core.calc(firstFunction, range1, eulerMethod, accuracy) );
+// console.log( 'adamsMethodResult = ', core.calc(firstFunction, range1, adamsMethod, accuracy) );
+
+

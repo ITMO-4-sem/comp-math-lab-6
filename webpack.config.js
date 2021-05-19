@@ -28,12 +28,12 @@ module.exports = {
 
   entry: {
     main: './ts/index.ts',
-    debug: './ts/debug.ts'
   },
 
   output: {
     filename: isDev ? '[name].js' : '[name].[contenthash].min.js',
     path: path.resolve(__dirname, 'dist'),
+    globalObject: 'this',
   },
 
   devtool: isDev ? 'source-map' : false,

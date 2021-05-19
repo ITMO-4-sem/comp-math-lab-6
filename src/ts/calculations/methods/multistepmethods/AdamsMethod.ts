@@ -2,6 +2,7 @@ import { Method } from '@ts/calculations/methods/Method';
 import { FlexibleTable } from '@ts/calculations/util/FlexibleTable';
 import { Function } from '@ts/calculations/functions/Function';
 import { MultiStepMethod } from '@ts/calculations/methods/multistepmethods/MultiStepMethod';
+import { NumberUtil } from '@ts/calculations/util/NumberUtil';
 
 
 export class AdamsMethod extends MultiStepMethod {
@@ -39,6 +40,11 @@ export class AdamsMethod extends MultiStepMethod {
                 + Math.pow(h, 3) * 5/12 * this.calcSecondFiniteDifference(i - 1)
                 + Math.pow(h, 4) * 3/8 * this.calcThirdFiniteDifference(i - 1)
             );
+
+            if ( ! NumberUtil.isValidNumber(this.yValues[i]) ) {
+                throw new Error(`Invalid "yi" value appeared during calculations:' +
+                    ' "${this.yValues[i]}".`);
+            }
         }
 
         return table;

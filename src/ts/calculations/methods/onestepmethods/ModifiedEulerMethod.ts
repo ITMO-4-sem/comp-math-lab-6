@@ -2,6 +2,7 @@ import { Method } from '@ts/calculations/methods/Method';
 import { FlexibleTable } from '@ts/calculations/util/FlexibleTable';
 import { Function } from '@ts/calculations/functions/Function';
 import { OneStepMethod } from '@ts/calculations/methods/onestepmethods/OneStepMethod';
+import { NumberUtil } from '@ts/calculations/util/NumberUtil';
 
 
 export class ModifiedEulerMethod extends OneStepMethod {
@@ -31,6 +32,12 @@ export class ModifiedEulerMethod extends OneStepMethod {
                     )
                 )
             );
+
+            if ( ! NumberUtil.isValidNumber(yValues[i]) ) {
+                throw new Error(`Invalid "yi" value appeared during calculations:' +
+                    ' "${yValues[i]}".`);
+            }
+
         }
 
         return table;

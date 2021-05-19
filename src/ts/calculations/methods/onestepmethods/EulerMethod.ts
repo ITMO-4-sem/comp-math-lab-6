@@ -2,6 +2,7 @@ import { Method } from '@ts/calculations/methods/Method';
 import { FlexibleTable } from '@ts/calculations/util/FlexibleTable';
 import { Function } from '@ts/calculations/functions/Function';
 import { OneStepMethod } from '@ts/calculations/methods/onestepmethods/OneStepMethod';
+import { NumberUtil } from '@ts/calculations/util/NumberUtil';
 
 
 
@@ -37,6 +38,11 @@ export class EulerMethod extends OneStepMethod {
         for ( let i = yValues.length; i < table.size(); i++ ) {
 
             yValues[i] = yValues[i - 1] + h * func.funcDerivative(xValues[i - 1], yValues[i - 1]);
+
+            if ( ! NumberUtil.isValidNumber(yValues[i]) ) {
+                throw new Error(`Invalid "yi" value appeared during calculations:' +
+                    ' "${yValues[i]}".`);
+            }
         }
 
         return table;

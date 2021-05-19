@@ -1,5 +1,6 @@
 import { Function } from '@ts/calculations/functions/Function';
 import { PrimaryCondition } from '@ts/calculations/functions/PrimaryCondition';
+import { NumberUtil } from '@ts/calculations/util/NumberUtil';
 
 
 export class FirstFunction extends Function {
@@ -27,9 +28,13 @@ export class FirstFunction extends Function {
         const x = primaryCondition.x;
         const y = primaryCondition.y;
 
-        return (
-            ( Math.exp(x) + y * x * Math.exp(x) ) / y
-        );
+        const c = ( Math.exp(x) + y * x * Math.exp(x) ) / y;
+
+        if ( ! NumberUtil.isValidNumber(c) ) {
+            throw new Error('Illegal constant value. Choose another primaryCondition');
+        }
+
+        return c;
     }
 
 

@@ -2,6 +2,7 @@ import { Method } from '@ts/calculations/methods/Method';
 import { FlexibleTable } from '@ts/calculations/util/FlexibleTable';
 import { Function } from '@ts/calculations/functions/Function';
 import { OneStepMethod } from '@ts/calculations/methods/onestepmethods/OneStepMethod';
+import { NumberUtil } from '@ts/calculations/util/NumberUtil';
 
 
 export class RungeKuttaMethod extends OneStepMethod {
@@ -29,6 +30,12 @@ export class RungeKuttaMethod extends OneStepMethod {
             const k4 = h * func.funcDerivative(xiPrev + h, yiPrev + k3);
 
             yValues[i] = yiPrev + 1/6 * (k1 + 2 * k2 + 2 * k3 + k4);
+
+            if ( ! NumberUtil.isValidNumber(yValues[i]) ) {
+                throw new Error(`Invalid "yi" value appeared during calculations:' +
+                    ' "${yValues[i]}".`);
+            }
+
         }
 
         return table;
