@@ -4,4 +4,4 @@
 
 
 Посмотреть лабу в деле можно по ссылке 
-[maximmon.dev](https://comp-math-lab-6.itmo.maximon.site/).
+[maximon.site](https://comp-math-lab-6.itmo.maximon.site/).
